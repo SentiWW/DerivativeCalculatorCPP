@@ -140,7 +140,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Addition.cpp" />
+    <ClCompile Include="Cos.cpp" />
+    <ClCompile Include="Ctan.cpp" />
     <ClCompile Include="DerivativeCalculator.cpp" />
+    <ClCompile Include="Division.cpp" />
+    <ClCompile Include="Equation.cpp" />
+    <ClCompile Include="Literal.cpp" />
+    <ClCompile Include="Multiplication.cpp" />
+    <ClCompile Include="OneOperator.cpp" />
+    <ClCompile Include="Sin.cpp" />
+    <ClCompile Include="Subtraction.cpp" />
+    <ClCompile Include="Tan.cpp" />
+    <ClCompile Include="TwoOperator.cpp" />
+    <ClCompile Include="Variable.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Addition.h" />
+    <ClInclude Include="Cos.h" />
+    <ClInclude Include="Ctan.h" />
+    <ClInclude Include="CustomMath.h" />
+    <ClInclude Include="Division.h" />
+    <ClInclude Include="Equation.h" />
+    <ClInclude Include="Literal.h" />
+    <ClInclude Include="Multiplication.h" />
+    <ClInclude Include="OneOperator.h" />
+    <ClInclude Include="Sin.h" />
+    <ClInclude Include="Subtraction.h" />
+    <ClInclude Include="Tan.h" />
+    <ClInclude Include="TwoOperator.h" />
+    <ClInclude Include="Variable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

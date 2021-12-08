@@ -1,434 +1,88 @@
 ﻿#include <iostream>
+#include <CustomMath.h>
+#define EQUATION_DEBUG 0
+#define ANALIZE_DEBUG 1
 
 using namespace std;
 
-class Equation
+//Equation * analize(const char * str, int start, int end)
+//{
+//
+//
+//    
+//}
+
+// Podfunkcja analizy (Identyfikator), określa czy znak jest
+// literą czy cyfrą
+// true     -->     litera
+// false    -->     cyfra
+bool analize_identifier(char c)
 {
-public:
-    // Priorytet wykonania operacji w równaniu, im większy tym wcześniej wykonuje się operacja
-    unsigned __int8 priority = 0;
+    if ('0' <= c && c <= '9')
+        return false;
 
-    Equation() {}
-    Equation(const Equation& src);
-    virtual Equation * calculate_derivative() = 0;
-    virtual double calculate(double x) = 0;
-    virtual void write() = 0;
-};
+    if ('a' <= c && c <= 'z' ||
+        'A' <= c && c <= 'Z')
+        return true;
 
-class Literal : public Equation
+    throw invalid_argument("Argument funkcji z poza dozwolonych wartosci " + c);
+}
+
+double analize_number(const char* str, int start)
 {
-private:
-    double value;
-
-public:
-    Literal(double value)
-    {
-        this->value = value;
-    }
-
-    Literal(const Literal &src)
-    {
-        new Literal(src.value);
-    }
-
-    ~Literal()
-    {
-
-    }
-
-    Equation * calculate_derivative()
-    {
-        return new Literal(0);
-    }
-
-    double calculate(double x) 
-    {
-        return value;
-    }
-
-    void write()
-    {
-        cout << value;
-    }
-};
-
-class Variable : public Equation
-{
-public:
-    Variable()
-    {
-
-    }
-
-    ~Variable()
-    {
-
-    }
-
-    Equation * calculate_derivative() 
-    {
-        return new Literal(1);
-    }
-
-    double calculate(double x) 
-    {
-        return x;
-    }
-
-    void write() 
-    {
-        cout << "x";
-    }
-};
-
-// Operator dwu-argumentowy
-class TwoOperator : public Equation
-{
-protected:
-    Equation * first, * second;
-
-public:
-    TwoOperator(Equation * first, Equation * second)
-    {
-        this->first = first;
-        this->second = second;
-    }
-
-    TwoOperator(const TwoOperator &src)
-    {
-        // !!!!!!!!!!!!!!!!!!!!!!!!!
-        // Tymczasowe przypisanie, może działać błędnie
-        first = src.first;
-        second = src.second;
-    }
-};
-
-class Addition : public TwoOperator
-{
-public:
-    Addition(Equation* first, Equation* second) : TwoOperator(first, second)
-    {
-        this->priority = 1;
-    }
-
-    ~Addition()
-    {
-
-    }
-
-    Equation * calculate_derivative()
-    {
-        return new Addition(first->calculate_derivative(), second->calculate_derivative());
-    }
-
-    double calculate(double x)
-    {
-        return first->calculate(x) + second->calculate(x);
-    }
-
-    void write()
-    {
-        if (first->priority < this->priority)
-        {
-            cout << "(";
-            first->write();
-            cout << "+";
-            second->write();
-            cout << ")";
-        }
-        else
-        {
-            first->write();
-            cout << "+";
-            second->write();
-        }
-    }
-};
-
-class Subtraction : public TwoOperator
-{
-public:
-    Subtraction(Equation* first, Equation* second) : TwoOperator(first, second)
-    {
-        this->priority = 1;
-    }
-
-    ~Subtraction()
-    {
-
-    }
-
-    Equation * calculate_derivative()
-    {
-        return this;
-    }
-
-    double calculate(double x)
-    {
-        return first->calculate(x) - second->calculate(x);
-    }
-
-    void write()
-    {
-        if (first->priority < this->priority)
-        {
-            cout << "(";
-            first->write();
-            cout << "-";
-            second->write();
-            cout << ")";
-        }
-        else
-        {
-            first->write();
-            cout << "-";
-            second->write();
-        }
-    }
-};
-
-class Multiplication : public TwoOperator
-{
-public:
-    Multiplication(Equation* first, Equation* second) : TwoOperator(first, second)
-    {
-        this->priority = 3;
-    }
-
-    ~Multiplication()
-    {
-
-    }
-
-    Equation * calculate_derivative()
-    {
-        //return new Addition(new Multiplication(first->calculate_derivative(), new Equation(&second)), new Multiplication(second->calculate_derivative(), new Equation(&first)));
-        return NULL;
-    }
-
-    double calculate(double x)
-    {
-        return first->calculate(x) * second->calculate(x);
-    }
-
-    void write()
-    {
-        if (first->priority < this->priority)
-        {
-            cout << "(";
-            first->write();
-            cout << "*";
-            second->write();
-            cout << ")";
-        }
-        else
-        {
-            first->write();
-            cout << "*";
-            second->write();
-        }
-    }
-};
-
-class Division : public TwoOperator
-{
-public:
-    Division(Equation* first, Equation* second) : TwoOperator(first, second)
-    {
-        this->priority = 3;
-    }
-
-    ~Division()
-    {
-
-    }
-
-    Equation * calculate_derivative()
-    {
-        return this;
-    }
-
-    double calculate(double x)
-    {
-        return first->calculate(x) / second->calculate(x);
-    }
-
-    void write()
-    {
-        if (first->priority < this->priority)
-        {
-            cout << "(";
-            first->write();
-            cout << "/";
-            second->write();
-            cout << ")";
-        }
-        else
-        {
-            first->write();
-            cout << "/";
-            second->write();
-        }
-    }
-};
-
-// Operator jedno argumentowy
-class OneOperator : public Equation
-{
-protected:
-    Equation * first;
-
-public:
-    OneOperator(Equation * first)
-    {
-        this->first = first;
-    }
-};
-
-class Sin : public OneOperator
-{
-public:
-    Sin(Equation* first) : OneOperator(first)
-    {
-        this->priority = 2;
-    }
-
-    ~Sin()
-    {
-
-    }
-
-    Equation * calculate_derivative()
-    {
-        //return new Multiplication(first->calculate_derivative(), new Cos(first));
-    }
-
-    double calculate(double x) 
-    {
-        return sin(first->calculate(x));
-    }
-
-    void write() 
-    {
-        cout << "sin(";
-        first->write();
-        cout << ")";
-    }
-};
-
-class Cos : public OneOperator
-{
-public:
-    Cos(Equation* first) : OneOperator(first)
-    {
-        this->priority = 2;
-    }
-
-    ~Cos()
-    {
-
-    }
-
-    Equation * calculate_derivative() 
-    {
-
-    }
-
-    double calculate(double x) 
-    {
-        return cos(first->calculate(x));
-    }
-
-    void write() 
-    {
-        cout << "cos(";
-        first->write();
-        cout << ")";
-    }
-};
-
-class Tan : public OneOperator
-{
-public:
-    Tan(Equation* first) : OneOperator(first)
-    {
-        this->priority = 2;
-    }
-
-    ~Tan()
-    {
-
-    }
-
-    Equation * calculate_derivative()
-    {
-
-    }
-
-    double calculate(double x)
-    {
-        return tan(first->calculate(x));
-    }
-
-    void write()
-    {
-        cout << "tan(";
-        first->write();
-        cout << ")";
-    }
-};
-
-class Ctan : public OneOperator
-{
-public:
-    Ctan(Equation* first) : OneOperator(first)
-    {
-        this->priority = 2;
-    }
-
-    ~Ctan()
-    {
-
-    }
-
-    Equation * calculate_derivative()
-    {
-
-    }
-
-    double calculate(double x)
-    {
-        return cos(x) / sin(x);
-    }
-
-    void write()
-    {
-        cout << "ctan(";
-        first->write();
-        cout << ")";
-    }
-};
+    string s;
+
+    return 0;
+}
+
+//Equation * analize_simple_equation(const char* str, int start, int end)
+//{
+//
+//}
+//
+//Equation * analize_equation(const char * str, int start, int end)
+//{
+//
+//}
 
 int main()
 {
-    double x = 0;
+    // Obszar testów funkcji analize
+#if ANALIZE_DEBUG
+    // Użycie string aby łatwo móc wczytać ciąg nieznanej długości
+    string input;
+    cin >> input;
+    // Przejście ze string na null terminated string
+    const char* input_c_str = input.c_str();
+
+
+#endif
+    // Obszar testów klasy Equation i jej pochodnych
+#if EQUATION_DEBUG
+    double x;
+    Equation * var_1;
+    Equation * var_2;
+
+    Equation * var = new Addition(new Literal(2.3), new Addition(new Variable(), new Literal(2)));
+    //Equation * var = new Tan(new Variable());
+
+    var_1 = var->calculate_derivative();
+    var_2 = var_1->calculate_derivative();
+
+    cout << " f(x) = " << var << endl;
+    cout << "f'(x) = " << var_1 << endl;
+    cout << "f\"(x) = " << var_2 << endl << endl;
+
     cout << "Podaj x: ";
     cin >> x;
-    cout << endl;
+    cout << endl << endl;
 
-    Variable * var = new Variable();
-    var->write();
-    cout << " = " << var->calculate(x) << endl;
+    cout << " f(" << x << ") = " << var->calculate(x) << endl;
+    cout << "f'(" << x << ") = " << var_1->calculate(x) << endl;
+    cout << "f\"(" << x << ") = " << var_2->calculate(x) << endl << endl;
 
-    Addition * sum = new Addition(new Literal(2.3), new Division(new Variable(), new Literal(2)));
-    sum->write();
-    cout << " = " << sum->calculate(x) << endl;
-
-    Multiplication * mul = new Multiplication(new Literal(5), new Subtraction(new Addition(new Literal(2.3), new Division(new Variable(), new Literal(2))), new Literal(20)));
-    mul->write();
-    cout << " = " << mul->calculate(x) << endl;
-
-    Multiplication* mul0 = new Multiplication(new Subtraction(new Literal(2), new Literal(20)), new Variable());
-    mul0->write();
-    cout << " = " << mul0->calculate(x) << endl;
+    delete var;
+    delete var_1;
+    delete var_2;
+#endif
 }

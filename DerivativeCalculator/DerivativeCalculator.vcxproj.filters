@@ -13,10 +13,111 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\OneOperator">
+      <UniqueIdentifier>{aad870cf-af4e-454f-852a-d899be86cc08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OneOperator">
+      <UniqueIdentifier>{e89697ce-3a7d-4ae3-b163-e27bc346b986}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TwoOperator">
+      <UniqueIdentifier>{b1062f4c-8082-403a-be93-6a67495c7e86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TwoOperator">
+      <UniqueIdentifier>{ef7c4556-9ff6-405a-a0e6-c16d00b8dc85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Other">
+      <UniqueIdentifier>{43d95714-5d2e-4283-9879-e55ab8a49ef9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Other">
+      <UniqueIdentifier>{4d155e1f-4d3b-4ef1-a064-34d5f9e39952}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DerivativeCalculator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cos.cpp">
+      <Filter>Source Files\OneOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="Ctan.cpp">
+      <Filter>Source Files\OneOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="Sin.cpp">
+      <Filter>Source Files\OneOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="Tan.cpp">
+      <Filter>Source Files\OneOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="OneOperator.cpp">
+      <Filter>Source Files\OneOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="Addition.cpp">
+      <Filter>Source Files\TwoOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="Division.cpp">
+      <Filter>Source Files\TwoOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="Multiplication.cpp">
+      <Filter>Source Files\TwoOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="Subtraction.cpp">
+      <Filter>Source Files\TwoOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="TwoOperator.cpp">
+      <Filter>Source Files\TwoOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="Equation.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Literal.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Variable.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cos.h">
+      <Filter>Header Files\OneOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="Ctan.h">
+      <Filter>Header Files\OneOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="OneOperator.h">
+      <Filter>Header Files\OneOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="Sin.h">
+      <Filter>Header Files\OneOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="Tan.h">
+      <Filter>Header Files\OneOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="Addition.h">
+      <Filter>Header Files\TwoOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="Division.h">
+      <Filter>Header Files\TwoOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="Multiplication.h">
+      <Filter>Header Files\TwoOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="Subtraction.h">
+      <Filter>Header Files\TwoOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoOperator.h">
+      <Filter>Header Files\TwoOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomMath.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Equation.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Literal.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Variable.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
