@@ -8,7 +8,7 @@
 #include <Literal.h>		
 // Zmienna					
 #include <Variable.h>		
-// Operatory dwu argumentowe
+// Operatory jedno argumentowe
 #include <OneOperator.h>	
 #include <Sin.h>			
 #include <Cos.h>			
