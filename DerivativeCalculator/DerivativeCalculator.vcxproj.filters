@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Other">
       <UniqueIdentifier>{4d155e1f-4d3b-4ef1-a064-34d5f9e39952}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Analize">
+      <UniqueIdentifier>{470e26c0-76d4-422f-a9a9-8af2aa8ffe1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Analize">
+      <UniqueIdentifier>{7e1da8fb-c7f7-4bc9-ad24-ab4ed234744a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DerivativeCalculator.cpp">
@@ -75,6 +81,15 @@
     <ClCompile Include="Variable.cpp">
       <Filter>Source Files\Other</Filter>
     </ClCompile>
+    <ClCompile Include="Constant.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Source Files\OneOperator</Filter>
+    </ClCompile>
+    <ClCompile Include="Analize.cpp">
+      <Filter>Source Files\Analize</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cos.h">
@@ -118,6 +133,15 @@
     </ClInclude>
     <ClInclude Include="Variable.h">
       <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Constant.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Header Files\OneOperator</Filter>
+    </ClInclude>
+    <ClInclude Include="Analize.h">
+      <Filter>Header Files\Analize</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

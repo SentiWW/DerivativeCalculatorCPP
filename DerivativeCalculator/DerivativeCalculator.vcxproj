@@ -141,12 +141,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Addition.cpp" />
+    <ClCompile Include="Analize.cpp" />
+    <ClCompile Include="Constant.cpp" />
     <ClCompile Include="Cos.cpp" />
     <ClCompile Include="Ctan.cpp" />
     <ClCompile Include="DerivativeCalculator.cpp" />
     <ClCompile Include="Division.cpp" />
     <ClCompile Include="Equation.cpp" />
     <ClCompile Include="Literal.cpp" />
+    <ClCompile Include="Log.cpp" />
     <ClCompile Include="Multiplication.cpp" />
     <ClCompile Include="OneOperator.cpp" />
     <ClCompile Include="Sin.cpp" />
@@ -157,12 +160,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Addition.h" />
+    <ClInclude Include="Analize.h" />
+    <ClInclude Include="Constant.h" />
     <ClInclude Include="Cos.h" />
     <ClInclude Include="Ctan.h" />
     <ClInclude Include="CustomMath.h" />
     <ClInclude Include="Division.h" />
     <ClInclude Include="Equation.h" />
     <ClInclude Include="Literal.h" />
+    <ClInclude Include="Log.h" />
     <ClInclude Include="Multiplication.h" />
     <ClInclude Include="OneOperator.h" />
     <ClInclude Include="Sin.h" />
