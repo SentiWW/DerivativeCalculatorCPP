@@ -8,8 +8,10 @@
 class Addition : public TwoOperator
 {
 public:
+    static Equation* CREATE(Equation* first, Equation* second);
+private:
     Addition(Equation* first, Equation* second);
-
+public:
     Addition(const Addition& src);
 
     Equation* clone();
@@ -25,21 +27,30 @@ public:
 
     virtual void write(ostream& s)
     {
-        if (first->priority < this->priority)
+        if (first->get_class_id() == C_Multiplication ||
+            first->get_class_id() == C_Division)
         {
-            s << "(";
+            s << '(';
             first->write(s);
-            s << "+";
-            second->write(s);
-            s << ")";
+            s << ')';
         }
         else
-        {
             first->write(s);
-            s << "+";
+        
+        s << '+';
+
+        if (second->get_class_id() == C_Multiplication ||
+            second->get_class_id() == C_Division)
+        {
+            s << '(';
             second->write(s);
+            s << ')';
         }
+        else
+            second->write(s);
     }
+
+    virtual int get_class_id() { return C_Addition; };
 
     friend ostream& operator<<(ostream& s, Addition& e)
     {

@@ -17,6 +17,8 @@ public:
     OneOperator(OneOperator& src);
 
     ~OneOperator();
+
+    virtual int get_class_id() { return C_OneOperator; };
 };
 
 #endif

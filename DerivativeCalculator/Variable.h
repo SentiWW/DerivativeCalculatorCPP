@@ -23,6 +23,8 @@ public:
 
     void write(ostream& s);
 
+    virtual int get_class_id() { return C_Variable; };
+
     friend ostream& operator<<(ostream& s, Variable& e)
     {
         e.write(s);

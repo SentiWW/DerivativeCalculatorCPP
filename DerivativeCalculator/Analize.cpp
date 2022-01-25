@@ -53,23 +53,23 @@ Equation* analize_factor(const char* str, int& start, int end)
             if (str[start + 1] == 'I')
             {
                 start += 2;
-                return new Constant(Constant::PI);
+                return new Constant(Constant::ConstantType::PI);
             }
             else
             {
                 start += 3;
-                return new Constant(Constant::PHI);
+                return new Constant(Constant::ConstantType::PHI);
             }
             break;
 
         case 'E':
             start += 1;
-            return new Constant(Constant::E);
+            return new Constant(Constant::ConstantType::E);
             break;
 
         case 'T':
             start += 3;
-            return new Constant(Constant::TAU);
+            return new Constant(Constant::ConstantType::TAU);
             break;
         }
     }
@@ -85,6 +85,16 @@ Equation* analize_factor(const char* str, int& start, int end)
         switch (str[start])
         {
             // Pierwsze litery nazwy funkcji
+
+        case '(':
+        {
+            startTemp = ++start;
+            Equation* parentheses = new Parentheses(analize_simple_equation(str, startTemp, end));
+            start = startTemp + 1;
+            return parentheses;
+            break;
+        }
+
         case 'c':
         {
             // Druga litera nazwy funkcji
@@ -169,9 +179,9 @@ Equation* analize_component(const char* str, int& start, int end)
         Equation* temp;
 
         if (operation)
-            temp = new Multiplication(first_factor, second_factor);
+            temp = Multiplication::CREATE(first_factor, second_factor);
         else
-            temp = new Division(first_factor, second_factor);
+            temp = Division::CREATE(first_factor, second_factor);
 
         first_factor = temp;
     }
@@ -203,7 +213,7 @@ Equation* analize_simple_equation(const char* str, int& start, int end)
 
     if (!sign)
     {
-        Equation* first_component_signed = new Multiplication(new Literal(-1), first_component);
+        Equation* first_component_signed = Multiplication::CREATE(new Literal(-1), first_component);
 
         first_component = first_component_signed;
     }
@@ -231,9 +241,9 @@ Equation* analize_simple_equation(const char* str, int& start, int end)
         Equation* temp;
 
         if (sign)
-            temp = new Addition(first_component, second_component);
+            temp = Addition::CREATE(first_component, second_component);
         else
-            temp = new Subtraction(first_component, second_component);
+            temp = Subtraction::CREATE(first_component, second_component);
 
         first_component = temp;
     }

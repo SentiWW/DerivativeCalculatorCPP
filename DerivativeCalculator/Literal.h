@@ -32,6 +32,8 @@ public:
         s << value;
     }
 
+    virtual int get_class_id() { return C_Literal; };
+
     friend ostream& operator<<(ostream& s, Literal& e)
     {
         e.write(s);

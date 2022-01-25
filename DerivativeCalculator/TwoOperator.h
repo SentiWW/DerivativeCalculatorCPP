@@ -17,6 +17,8 @@ public:
     TwoOperator(const TwoOperator& src);
 
     ~TwoOperator();
+
+    virtual int get_class_id() { return C_TwoOperator; };
 };
 
 #endif

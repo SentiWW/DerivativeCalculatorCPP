@@ -12,19 +12,19 @@ Constant::Constant(Constant::ConstantType type)
 
     switch (type)
     {
-        case PI:
+        case ConstantType::PI:
             Constant::value = 3.1415926535;
             break;
 
-        case E:
+        case ConstantType::E:
             Constant::value = 2.7182818284;
             break;
 
-        case TAU:
+        case ConstantType::TAU:
             Constant::value = 6.2841853071;
             break;        
     
-        case PHI:
+        case ConstantType::PHI:
             Constant::value = 1.6180339887;
             break;
     }
@@ -32,7 +32,7 @@ Constant::Constant(Constant::ConstantType type)
 
 Constant::Constant(const Constant& src)
 {
-
+    this->constant_type = src.constant_type;
 }
 
 Constant::~Constant()
@@ -60,19 +60,19 @@ void Constant::write()
 {
     switch (Constant::constant_type)
     {
-        case PI:
+        case ConstantType::PI:
             cout << "PI";
             break;
 
-        case E:
+        case ConstantType::E:
             cout << "E";
             break;
 
-        case TAU:
+        case ConstantType::TAU:
             cout << "TAU";
             break;        
     
-        case PHI:
+        case ConstantType::PHI:
             cout << "PHI";
             break;
     }
@@ -82,20 +82,20 @@ void Constant::write(ostream& s)
 {
     switch (Constant::constant_type)
     {
-        case PI:
-            cout << "PI";
+        case ConstantType::PI:
+            s << "PI";
             break;
 
-        case E:
-            cout << "E";
+        case ConstantType::E:
+            s << "E";
             break;
 
-        case TAU:
-            cout << "TAU";
+        case ConstantType::TAU:
+            s << "TAU";
             break;
 
-        case PHI:
-            cout << "PHI";
+        case ConstantType::PHI:
+            s << "PHI";
             break;
     }
 }

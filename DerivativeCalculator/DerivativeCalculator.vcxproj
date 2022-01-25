@@ -94,6 +94,10 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -110,6 +114,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -152,6 +160,7 @@
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Multiplication.cpp" />
     <ClCompile Include="OneOperator.cpp" />
+    <ClCompile Include="Parentheses.cpp" />
     <ClCompile Include="Sin.cpp" />
     <ClCompile Include="Subtraction.cpp" />
     <ClCompile Include="Tan.cpp" />
@@ -161,6 +170,7 @@
   <ItemGroup>
     <ClInclude Include="Addition.h" />
     <ClInclude Include="Analize.h" />
+    <ClInclude Include="EquationTypes.h" />
     <ClInclude Include="Constant.h" />
     <ClInclude Include="Cos.h" />
     <ClInclude Include="Ctan.h" />
@@ -171,6 +181,7 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="Multiplication.h" />
     <ClInclude Include="OneOperator.h" />
+    <ClInclude Include="Parentheses.h" />
     <ClInclude Include="Sin.h" />
     <ClInclude Include="Subtraction.h" />
     <ClInclude Include="Tan.h" />

@@ -90,6 +90,9 @@
     <ClCompile Include="Analize.cpp">
       <Filter>Source Files\Analize</Filter>
     </ClCompile>
+    <ClCompile Include="Parentheses.cpp">
+      <Filter>Source Files\OneOperator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cos.h">
@@ -142,6 +145,12 @@
     </ClInclude>
     <ClInclude Include="Analize.h">
       <Filter>Header Files\Analize</Filter>
+    </ClInclude>
+    <ClInclude Include="EquationTypes.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Parentheses.h">
+      <Filter>Header Files\OneOperator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -8,8 +8,10 @@
 class Division : public TwoOperator
 {
 public:
+    static Equation* CREATE(Equation* first, Equation* second);
+private:
     Division(Equation* first, Equation* second);
-
+public:
     Division(const Division& src);
 
     Equation* clone();
@@ -27,11 +29,9 @@ public:
     {
         if (first->priority < this->priority)
         {
-            s << "(";
             first->write(s);
             s << "/";
             second->write(s);
-            s << ")";
         }
         else
         {
@@ -40,6 +40,8 @@ public:
             second->write(s);
         }
     }
+
+    virtual int get_class_id() { return C_Division; };
 
     friend ostream& operator<<(ostream& s, Division& e)
     {

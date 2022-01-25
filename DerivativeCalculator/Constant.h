@@ -6,12 +6,12 @@
 
 class Constant : public Equation
 {
-public:
-    enum ConstantType { ZERO, PI, E, TAU, PHI };
+public:                     // PI/2, 2PI
+    enum class ConstantType { ZERO, PI, E, TAU, PHI };
 
     double value = 0;
 
-    ConstantType constant_type = ZERO;
+    ConstantType constant_type = ConstantType::ZERO;
 
     Constant();
 
@@ -30,6 +30,8 @@ public:
     void write();
 
     void write(ostream& s);
+
+    virtual int get_class_id() { return C_Constant; };
 
     friend ostream& operator<<(ostream& s, Constant& e)
     {

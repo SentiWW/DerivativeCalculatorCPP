@@ -3,6 +3,7 @@
 #define EQUATION_H
 
 #include <iostream>
+#include <EquationTypes.h>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ public:
     virtual Equation* calculate_derivative() = 0;
     virtual double calculate(double x) = 0;
     virtual void write(ostream&) = 0;
+    virtual int get_class_id() { return C_Equation; };
 
     friend ostream& operator << (ostream&, Equation& e);
     friend ostream& operator << (ostream& s, Equation* e);

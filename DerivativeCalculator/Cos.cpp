@@ -21,9 +21,9 @@ Equation* Cos::clone()
 
 Equation* Cos::calculate_derivative()
 {
-    return new Multiplication(
+    return Multiplication::CREATE(
         new Literal(-1),
-        new Multiplication(
+        Multiplication::CREATE(
             new Sin(first->clone()),
             first->calculate_derivative()));
 }

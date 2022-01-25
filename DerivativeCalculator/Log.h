@@ -30,6 +30,8 @@ public:
         s << ")";
     }
 
+    virtual int get_class_id() { return C_Log; };
+
     friend ostream& operator<<(ostream& s, Log& e)
     {
         e.write(s);

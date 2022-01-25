@@ -11,7 +11,8 @@
 // Stała
 #include <Constant.h>
 // Operatory jedno argumentowe
-#include <OneOperator.h>	
+#include <OneOperator.h>
+#include <Parentheses.h>
 #include <Sin.h>			
 #include <Cos.h>			
 #include <Tan.h>			

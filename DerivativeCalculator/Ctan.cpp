@@ -22,7 +22,7 @@ Equation* Ctan::clone()
 
 Equation* Ctan::calculate_derivative()
 {
-    return new Multiplication(new Literal(-1), new Division(new Literal(1), new Multiplication(new Sin(first), new Sin(first))));
+    return Multiplication::CREATE(new Literal(-1), Division::CREATE(new Literal(1), Multiplication::CREATE(new Sin(first), new Sin(first))));
 }
 
 double Ctan::calculate(double x)

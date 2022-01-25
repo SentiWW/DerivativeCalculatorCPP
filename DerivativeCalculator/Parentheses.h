@@ -1,17 +1,16 @@
 #pragma once
-#ifndef COS_H
-#define COS_H
-
+#ifndef PARENTHESES_H
+#define PARENTHESES_H
 
 #include <Equation.h>
 #include <OneOperator.h>
 
-class Cos : public OneOperator
+class Parentheses : public OneOperator
 {
 public:
-    Cos(Equation* first);
+    Parentheses(Equation* first);
 
-    Cos(const Cos& src);
+    Parentheses(const Parentheses& src);
 
     Equation* clone();
 
@@ -26,20 +25,20 @@ public:
 
     virtual void write(ostream& s)
     {
-        s << "cos(";
+        s << "(";
         first->write(s);
         s << ")";
     }
 
-    virtual int get_class_id() { return C_Cos; }
+    virtual int get_class_id() { return C_Parentheses; };
 
-    friend ostream& operator<<(ostream& s, Cos& e)
+    friend ostream& operator<<(ostream& s, Parentheses& e)
     {
         e.write(s);
         return s;
     }
 
-    friend ostream& operator<<(ostream& s, Cos* e)
+    friend ostream& operator<<(ostream& s, Parentheses* e)
     {
         e->write(s);
         return s;

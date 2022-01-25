@@ -22,8 +22,8 @@ Equation* Log::clone()
 
 Equation* Log::calculate_derivative()
 {
-    return new Multiplication(
-        new Division(
+    return Multiplication::CREATE(
+        Division::CREATE(
             new Literal(1),
             new Variable()
         ), 

@@ -22,7 +22,7 @@ Equation* Tan::clone()
 
 Equation* Tan::calculate_derivative()
 {
-    return new Division(new Literal(1), new Multiplication(new Cos(first), new Cos(first)));
+    return Division::CREATE(new Literal(1), Multiplication::CREATE(new Cos(first), new Cos(first)));
 }
 
 double Tan::calculate(double x)
